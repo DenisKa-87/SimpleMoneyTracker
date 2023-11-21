@@ -1,0 +1,11 @@
+PUT https://localhost:5001/api/records/6
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJleGFtcGxlMUBnbWFpbC5jb20iLCJuYmYiOjE2OTYzMzY1NDgsImV4cCI6MTY5Njk0MTM0OCwiaWF0IjoxNjk2MzM2NTQ4fQ.GjjznzUPrdvB09bpW2D3bqxlqaHhywcCFA_ZPKuvFn4Zr3u3ldbw05L4_Fax0AmVKzMFM0Hr5inpGUMbBVZ6Dg
+Content-Type: application/json
+
+{
+    "name": "an apple",
+    "description": "",
+    "recordtype": "1",
+    "price": "100",
+    "date": "2023-09-24T18:25:43.511Z"
+}

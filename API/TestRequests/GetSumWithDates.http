@@ -1,0 +1,3 @@
+Get https://localhost:5001/api/records/sum?minDate=2023/10/16&maxDate=2023/10/16&recordType=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyIiwidW5pcXVlX25hbWUiOiJ0ZXN0MUBtYWlsLnJ1IiwibmJmIjoxNjk3NDQ5OTUxLCJleHAiOjE2OTgwNTQ3NTEsImlhdCI6MTY5NzQ0OTk1MX0.1lTuGQJgrZ4rTdq4Pc_0T9WTjHIBrpGPHiY-xduvmSGoEdX0qXErryjuF63MbxFgbI3Xj7V-PurOAmMfuGAY0Q
+Content-Type: application/json

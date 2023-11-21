@@ -1,0 +1,15 @@
+POST https://localhost:5001/api/records
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJleGFtcGxlMUBnbWFpbC5jb20iLCJuYmYiOjE2OTY0MDUwNDksImV4cCI6MTY5NzAwOTg0OSwiaWF0IjoxNjk2NDA1MDQ5fQ.Wh15Ii40ntq1gm5Wr0u5pM2w92TiUWXqExrjqK4mlKqjW--Hjd3PBeVvZJPDt9mcXVnH6VRZx3iUGWBoqGivnQ
+Content-Type: application/json
+
+{
+  
+
+    "name": "payment",
+    "description": "",
+    "recordtype": "2",
+    "category": "salary",
+    "price": "2500",
+    "date": "2022-09-24T18:25:43.511Z",
+    "id": 0
+}

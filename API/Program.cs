@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace API
 {
     public class Program
@@ -12,21 +14,27 @@ namespace API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            //builder.Services.AddIdentityServices(builder.Configuration);
+            builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            ;
+            builder.Services.AddCors();
             var app = builder.Build();
 
+            app.UseCors(x =>
+                        x.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("https://localhost:4200", "http://localhost:4200"));
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.MapControllers();
 
             app.Run();
