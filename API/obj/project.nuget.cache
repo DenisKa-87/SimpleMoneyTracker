@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "exnQ7+u2jOnNe5uFO1LNKgLmov0BnI9vg6vQPhTQni+ZyVdPx0h/1uw2+qyeoFq00lutajSv96h3U6Xj2/h2YQ==",
+  "success": true,
+  "projectFilePath": "C:\\Main\\myPetProjects\\SimpleMoneyTracker\\API\\API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\26520\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
