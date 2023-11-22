@@ -1,13 +1,12 @@
 ﻿using API.DTO;
-using API.Enitities;
+using API.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace API.Interfaces
 {
     public interface IAccountRepository
     {
-        Task<AppUser> GetUserFullDataByIdAsync(int id);
-        Task<AppUser> GetUserByIdWithCategoriesAsync(int id);
+        Task<AppUser> GetUserFullDataByEmailAsync(string email);
         Task<AppUser> GetUSerByEmailAsync(string email);
         Task<IEnumerable<Category>> GetCategories(int userId);
         Task<IdentityResult> CreateAsync(AppUser newUser, string password);

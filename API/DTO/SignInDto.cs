@@ -13,9 +13,7 @@ namespace API.DTO
         public string Password { get; set; }
         [Required]
         [StringLength(16), MinLength(3)]
-        public string Appeal { get; set; }
-
-
+        public string Name { get; set; }
 
     }
 }

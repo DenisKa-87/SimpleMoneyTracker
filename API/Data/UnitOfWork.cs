@@ -1,4 +1,4 @@
-﻿using API.Enitities;
+﻿using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
@@ -11,9 +11,9 @@ namespace API.Data
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
 
-        public IRecordsRepository RecordRepository => throw new NotImplementedException();
+        public IRecordsRepository RecordsRepository => new RecordsRepository(_context);
 
-        public IAccountRepository UserRepository => throw new NotImplementedException();
+        public IAccountRepository AccountRepository => new AccountRepository(_context, _userManager, _signInManager, _tokenService);
 
 
         public UnitOfWork(DataContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, 
@@ -26,7 +26,8 @@ namespace API.Data
         }
         public async Task<bool> Complete()
         {
-            return await _context.SaveChangesAsync() > 0;
+            var complete = await _context.SaveChangesAsync() > 0;
+            return complete;
         }
 
         public bool HasChanges()
