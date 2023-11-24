@@ -1,7 +1,10 @@
 ﻿using API.Data;
 using API.DTO;
 using API.Entities;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -66,16 +69,60 @@ namespace API.Controllers
             return BadRequest("Could not delete this record");
         }
 
-        [HttpGet]
-        public Task<ActionResult<IEnumerable<ResponseRecordDto>>> GetRecords([FromQuery] string CategoryId,
-            [FromQuery] string RecordType,
-            [FromQuery] string MinDate,
-            [FromQuery] string MaxDate,
-            [FromQuery] string itemsPerPage,
-            [FromQuery] string pageNumber,
-            [FromQuery] string Order)
+        [HttpGet("categories")]
+
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
         {
-            throw new NotImplementedException();
+            //var userId = User.Identity.GetUserId();
+            //var categories = await _unitOfWork.AccountRepository.GetCategories(userId);
+            var userName = User.Identity.Name;
+            var user = await _unitOfWork.AccountRepository.GetUSerByEmailAsync(userName);
+            var categories = user.Categories;
+            var categoriesDto = new List<CategoryDto>();
+            foreach (var category in categories)
+            {
+                categoriesDto.Add(new CategoryDto(category));
+            }
+            return Ok(categoriesDto);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ResponseRecordDto>>> GetRecords([FromQuery] string CategoryId,
+                                           [FromQuery] string RecordType,
+                                           [FromQuery] string MinDate,
+                                           [FromQuery] string MaxDate,
+                                           [FromQuery] string itemsPerPage,
+                                           [FromQuery] string pageNumber,
+                                           [FromQuery] string Order)
+        {
+
+            var userId = Int32.Parse(User.Identity.Name);
+            QueryParams queryParams = CreateQueryParams(CategoryId, RecordType, MinDate, MaxDate, itemsPerPage, pageNumber, Order);
+            var records = await _unitOfWork.RecordsRepository.GetRecordsAsync(queryParams, userId);
+            var response = new List<ResponseRecordDto>();
+
+            foreach (var record in records)
+            {
+                response.Add(CreateResponseRecordDto(record));
+            }
+            Response.AddPaginationHeader(records);
+
+            return Ok(response);
+        }
+
+        private QueryParams CreateQueryParams(string CategoryId, string RecordType, string MinDate, string MaxDate,
+             string itemsPerPage, string PageNumber, string Order)
+        {
+            return new QueryParams()
+            {
+                CategoryId = CategoryId == null ? int.MinValue : Int32.Parse(CategoryId),
+                MaxDate = (MaxDate == null) ? DateTime.MaxValue : DateTime.Parse(MaxDate),
+                MinDate = (MinDate == null) ? DateTime.MinValue : DateTime.Parse(MinDate),
+                RecordType = RecordType == null ? 1 : Int32.Parse(RecordType),
+                pageNumber = PageNumber == null ? 1 : Int32.Parse(PageNumber),
+                PageSize = itemsPerPage == null ? 20 : Int32.Parse(itemsPerPage),
+                Order = Order
+            };
         }
 
         [HttpGet]

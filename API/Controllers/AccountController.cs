@@ -61,10 +61,10 @@ namespace API.Controllers
         }
 
         [HttpPost("signin")]
-        public async Task<ActionResult<UserDto>> SignIn(SignInDto registerDto)
+        public async Task<ActionResult<UserDto>> SignIn(SignInDto signInDto)
         {
-            AppUser newUser = CreateUser(registerDto);
-            var result = await _unitOfWork.AccountRepository.CreateAsync(newUser, registerDto.Password);
+            AppUser newUser = CreateUser(signInDto);
+            var result = await _unitOfWork.AccountRepository.CreateAsync(newUser, signInDto.Password);
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors);

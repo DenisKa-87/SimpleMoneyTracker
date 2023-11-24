@@ -35,14 +35,19 @@ namespace API.Data
            return _userManager.DeleteAsync(user);
         }
 
-        public Task<IEnumerable<Category>> GetCategories(int userId)
+        public async Task<IEnumerable<Category>> GetCategories(string  email)
         {
-            throw new NotImplementedException();
+            var user = await GetUSerByEmailAsync(email);
+            return user.Categories.ToArray();
         }
 
         public async Task<AppUser> GetUSerByEmailAsync(string email)
         {
-            return await _context.Users.Include(x => x.Categories).FirstOrDefaultAsync(x => x.NormalizedUserName == email.ToUpper());
+            if(email==null)
+                return null;
+            return await _context.Users
+                .Include(x => x.Categories)
+                .FirstOrDefaultAsync(x => x.NormalizedUserName == email.ToUpper());
         }
 
         //public Task<AppUser> GetUserByIdWithCategoriesAsync(int id)

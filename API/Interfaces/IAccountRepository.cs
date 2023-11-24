@@ -8,7 +8,7 @@ namespace API.Interfaces
     {
         Task<AppUser> GetUserFullDataByEmailAsync(string email);
         Task<AppUser> GetUSerByEmailAsync(string email);
-        Task<IEnumerable<Category>> GetCategories(int userId);
+        Task<IEnumerable<Category>> GetCategories(string email);
         Task<IdentityResult> CreateAsync(AppUser newUser, string password);
         Task<string> CreateToken(AppUser user);
         Task<SignInResult> Login(AppUser user, string password);

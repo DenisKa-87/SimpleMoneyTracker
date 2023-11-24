@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.DTO;
 using API.Entities;
+using API.Helpers;
 
 namespace API.Interfaces
 {
@@ -9,8 +10,7 @@ namespace API.Interfaces
         Record Add(RecordDto record, AppUser userId);
         void UpdateRecord(Record record, RecordDto recordDto);
         void DeleteRecord(Record record);
-
-        //Task<PagedList<Record>> GetRecordsAsync(QueryParams queryParams, int userId);
-       // Task<double> GetTotalRecordsAsync(QueryParams queryParams, int userId);
+        Task<PagedList<Record>> GetRecordsAsync(QueryParams queryParams, int userId);
+         Task<double> GetTotalRecordsAsync(QueryParams queryParams, int userId);
     }
 }

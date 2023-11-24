@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="mainContainer" >
+    <div *ngIf="(!signInMode && (accountService.currentUser$ |async) === null)" class="welcomeScreen">
+        <p class="description">A simple tool to track your money.</p>
+        <p class="register">Don't have an account yet?</p>
+        <a class="register" (click)="toggleSignInMode()">Sign in!</a>
+    </div>
+
+    <div *ngIf="signInMode" >
+        <app-signin (cancelRegister)="exitSignInMode($event)"></app-signin>
+    </div>
+</div>
