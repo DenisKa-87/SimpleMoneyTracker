@@ -1,0 +1,47 @@
+
+.navContainer{
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, rgb(1, 1, 71), rgb(85, 85, 213));
+    width: 100vw;
+    color: whitesmoke;
+    
+}
+
+#title{
+    position: absolute;
+    left: 50% - calc(width/2);
+}
+ @media(max-width: 900px){
+    #title{
+        position: relative;
+        left: 1vw;
+    }
+}
+
+.login, .greeting{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.greeting{
+    margin-right: 1vw;
+}
+
+.login > a, button{
+    margin-right: 1vw;
+} 
+
+
+input{
+    padding: 1vw;
+    height: 5vh;
+    margin: 1vh;
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    margin-right: 1vw;
+}

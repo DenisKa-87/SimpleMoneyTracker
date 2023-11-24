@@ -1,0 +1,10 @@
+
+    <h1>Entrer data for registration:</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && signIn()">
+        <input  formControlName="email" placeholder="Email">
+        <input  formControlName="name" placeholder="Name">
+        <input  formControlName="password" type="password" placeholder="Password">
+        <input  formControlName="confirmPassword" type="password" placeholder="Repeat password">
+        <button class="btn btn-success" type="submit">Sign In!</button>
+        <button class="btn btn-default " (click)="cancel()">Cancel</button>
+    </form>
