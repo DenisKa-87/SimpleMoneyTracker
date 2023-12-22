@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ErrorsInterceptor } from './_interceptors/errors.interceptor';
 import { JwtTokenInterceptor } from './_interceptors/jwt-token.interceptor';
+import { RecordListComponent } from './record-list/record-list.component';
+import { DatePickerComponent } from './_interceptors/_forms/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { JwtTokenInterceptor } from './_interceptors/jwt-token.interceptor';
     HomeComponent,
     NavComponent,
     AddRecordComponent,
-    SigninComponent
+    SigninComponent,
+    RecordListComponent,
+    DatePickerComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,9 @@ import { JwtTokenInterceptor } from './_interceptors/jwt-token.interceptor';
     BrowserAnimationsModule,
     ToastrModule.forRoot(
       {positionClass: 'toast-bottom-right'}),
-    FormsModule
+    FormsModule,
+    BsDropdownModule.forRoot(), 
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true},

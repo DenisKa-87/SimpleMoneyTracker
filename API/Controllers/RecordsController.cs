@@ -7,6 +7,7 @@ using API.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -58,14 +59,15 @@ namespace API.Controllers
         {
             var userName = User.Identity.Name;
             var user = await _unitOfWork.AccountRepository.GetUserFullDataByEmailAsync(userName);
-            var record =  user.Records.FirstOrDefault(x => x.Id == id);
+            var record = user.Records.FirstOrDefault(x => x.Id == id);
             if (record == null)
             {
                 return BadRequest("Could not delete this record");
             }
             _unitOfWork.RecordsRepository.DeleteRecord(record);
             if (await _unitOfWork.Complete())
-                return Ok("Successfully deleted");
+                return Ok(new ResponseMessage("Successfully deleted"));
+                //return Ok();
             return BadRequest("Could not delete this record");
         }
 
@@ -87,7 +89,8 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ResponseRecordDto>>> GetRecords([FromQuery] string CategoryId,
+        public async Task<ActionResult<IEnumerable<ResponseRecordDto>>> GetRecords(
+                                           [FromQuery] string CategoryId,
                                            [FromQuery] string RecordType,
                                            [FromQuery] string MinDate,
                                            [FromQuery] string MaxDate,
@@ -96,7 +99,7 @@ namespace API.Controllers
                                            [FromQuery] string Order)
         {
 
-            var userId = Int32.Parse(User.Identity.Name);
+            var userId = Int32.Parse(User.Identity.GetUserId());
             QueryParams queryParams = CreateQueryParams(CategoryId, RecordType, MinDate, MaxDate, itemsPerPage, pageNumber, Order);
             var records = await _unitOfWork.RecordsRepository.GetRecordsAsync(queryParams, userId);
             var response = new List<ResponseRecordDto>();
@@ -118,14 +121,14 @@ namespace API.Controllers
                 CategoryId = CategoryId == null ? int.MinValue : Int32.Parse(CategoryId),
                 MaxDate = (MaxDate == null) ? DateTime.MaxValue : DateTime.Parse(MaxDate),
                 MinDate = (MinDate == null) ? DateTime.MinValue : DateTime.Parse(MinDate),
-                RecordType = RecordType == null ? 1 : Int32.Parse(RecordType),
+                RecordType = RecordType == null ? -1 : Int32.Parse(RecordType),
                 pageNumber = PageNumber == null ? 1 : Int32.Parse(PageNumber),
                 PageSize = itemsPerPage == null ? 20 : Int32.Parse(itemsPerPage),
                 Order = Order
             };
         }
 
-        [HttpGet]
+        [HttpGet("summary")]
         public Task<double> GetSummary([FromQuery] string CategoryId, 
             [FromQuery] string RecordType, 
             [FromQuery] string MinDate, 

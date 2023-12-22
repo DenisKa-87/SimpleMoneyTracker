@@ -1,0 +1,9 @@
+<div class="mainContainer">
+    <h3 class="mt-5">List of your records: </h3>
+    <div class="recordList mt-5">
+        <ul>
+            <li  *ngFor="let record of records">{{record.name}} {{record.price}} {{record.category}} {{record.description}}
+                {{record.date}} {{record.recordType}}  <button class="btn btn-danger btn-sm " (click)="deleteRecord(record.id)">Delete</button></li>
+        </ul>
+    </div>
+</div>

@@ -5,7 +5,11 @@
         <a class="register" (click)="toggleSignInMode()">Sign in!</a>
     </div>
 
-    <div *ngIf="signInMode" >
-        <app-signin (cancelRegister)="exitSignInMode($event)"></app-signin>
+    <div *ngIf="signInMode && (accountService.currentUser$ |async) === null">
+        <app-signin></app-signin>
+    </div>
+    <div *ngIf="((accountService.currentUser$ |async) !== null)">
+        <app-add-record></app-add-record>
+        <!-- <app-record-list></app-record-list> -->
     </div>
 </div>

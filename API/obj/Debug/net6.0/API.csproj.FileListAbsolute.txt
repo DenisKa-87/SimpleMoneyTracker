@@ -68,3 +68,7 @@ C:\Main\myPetProjects\SimpleMoneyTracker\api\bin\Debug\net6.0\Microsoft.AspNetCo
 C:\Main\myPetProjects\SimpleMoneyTracker\api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Main\myPetProjects\SimpleMoneyTracker\api\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Main\myPetProjects\SimpleMoneyTracker\api\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

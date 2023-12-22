@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ModesService } from '../services/modes.service';
 import { AccountService } from '../services/account.service';
 import { ToastrService } from 'ngx-toastr';
@@ -15,13 +15,23 @@ export class NavComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
   }
+  
 
   login(){
     this.accountService.logIn(this.model).subscribe({
       next: () =>  this.toastr.success("Successfully logged in!")
     }
     )
+    this.modes.signInModeOff();
+  }
+
+  logout(){
+    if (confirm("Do you really want to log out?")){
+      this.accountService.logout();
+      this.modes.signInModeOff();
+    }
+    else
+      return;
   }
 }

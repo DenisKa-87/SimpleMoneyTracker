@@ -1,12 +1,23 @@
 <div class="navContainer">
-        <h2 id="title">Simple Money Tracker</h2>
+        <h2 id="title"><a href="">Simple Money Tracker</a></h2>
         <form class="login" *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" (ngSubmit)="login()">
             <input placeholder="your email" type="email" name="username" [(ngModel)]="model.Email">
             <input placeholder="Password" type="password" name="password" [(ngModel)]="model.password">
             <button class="btn btn-success " type="submit">Log in</button>
         </form>
         <div *ngIf="(accountService.currentUser$ | async) !== null" class="greeting">
-            <h4>Welcome, {{(accountService.currentUser$|async).name}}!</h4>
+            <div>
+                <h6><a href="/records" style="text-decoration: none !important;">Browse records</a></h6>
+            </div>
+            <div class="dropdown" dropdown>
+                <h6 class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>Welcome, {{(accountService.currentUser$|async).name}}!</h6>
+                <div class="dropdown-menu" *dropdownMenu>
+                    <h6 class="dropdown-item" (click)="logout()">Log out</h6>
+                    <div class="dropdown-divider "></div>
+                    <h6 class="dropdown-item">Edit profile</h6>
+                </div>
+            </div>
+           
         </div>
     
 </div>

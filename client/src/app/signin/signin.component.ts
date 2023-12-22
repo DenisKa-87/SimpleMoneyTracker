@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AccountService } from '../services/account.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators, FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ModesService } from '../services/modes.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,10 +16,10 @@ export class SigninComponent implements OnInit{
 
   registerForm: FormGroup;
   validationErrors: string[] = [];
-  @Output() cancelRegister = new EventEmitter;
   
 
-  constructor(private accountService: AccountService, private fb: FormBuilder, private toastr: ToastrService) { 
+  constructor(private accountService: AccountService, private fb: FormBuilder, private toastr: ToastrService,
+     private modes: ModesService) { 
   }
   ngOnInit(): void {
     this.initializeForm();
@@ -44,13 +45,14 @@ export class SigninComponent implements OnInit{
 
   signIn(){
     this.accountService.signIn(this.registerForm.value).subscribe({
-      next: response => this.toastr.success("You have signed in! Please log in now."),
+      next: () => this.toastr.success("You have signed in! Please log in now."),
       error: error => this.validationErrors = error
     })
     this.cancel();
   }
 
   cancel(){
-    this.cancelRegister.emit(false)
+    this.modes.signInModeOff();
+
   }
 }

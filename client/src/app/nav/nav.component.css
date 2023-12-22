@@ -19,6 +19,9 @@
         position: relative;
         left: 1vw;
     }
+    .navContainer{
+        justify-content: space-between;
+    }
 }
 
 .login, .greeting{
@@ -29,6 +32,14 @@
 
 .greeting{
     margin-right: 1vw;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+a{
+    color: whitesmoke;
+    text-decoration: none;
 }
 
 .login > a, button{
@@ -44,4 +55,8 @@ input{
     border-radius: 10px;
     width: 150px;
     margin-right: 1vw;
+}
+
+.dropdown h4, h5{
+    cursor: pointer;
 }

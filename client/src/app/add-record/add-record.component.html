@@ -1,1 +1,22 @@
-<p>add-record works!</p>
+<div class = "recordContainer">
+    <button id="addRecord" type="submit" form="recordForm" (click)="recordForm.valid && addRecord()">Add record</button>
+    <form [formGroup]="recordForm">
+        <input formControlName="name" type="text" placeholder="Item's name">
+        <input formControlName="price" type="number" placeholder="Item's price">
+        <input formControlName="category" type="text" placeholder="Item's category">
+        <app-date-picker [maxDate]="maxDate" [label]="'Pick a date'"
+        [formControl]='getControl(recordForm.controls["date"])'></app-date-picker>
+        <div class="form-group">
+            <label class="control-label" style="margin-right: 10px;">This is: </label>
+            <label for="" class="radio-inline">
+                <input type="radio" value="1" formControlName="recordType" >expence
+            </label>
+            <label for="" class="radio-inline">
+                <input type="radio" value="2" formControlName="recordType" >income
+            </label>
+
+        </div>
+        <input formControlName="description" type="text area" placeholder="Item's description">
+        
+    </form>
+</div>

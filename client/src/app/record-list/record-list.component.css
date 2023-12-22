@@ -1,0 +1,24 @@
+.recordList{
+    width: 70vw;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    border: solid 1px grey;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.recordList li:hover{
+    background-color: bisque;
+}
+.mainContainer{
+    justify-content: flex-start;
+}
+ul{
+    list-style: none;
+    padding: 0px;
+}
+li{
+    text-align: center;
+    margin: 0px;
+    padding: 1rem;
+}

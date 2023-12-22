@@ -1,10 +1,8 @@
 POST https://localhost:5001/api/records/add
-Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyIiwidW5pcXVlX25hbWUiOiJleGFtcGxlMkBnbWFpbC5jb20iLCJuYmYiOjE3MDA2NTMyNzcsImV4cCI6MTcwMTI1ODA3NywiaWF0IjoxNzAwNjUzMjc3fQ._nixyiMxW1x7aPl4Pi4pK3_lxA-umoB4v7ICvyrmOp1G0oFKCMqgsIxb_rtWeegoEz5K558dzsEhbtTAG7aFWA
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJleGFtcGxlMUBnbWFpbC5jb20iLCJuYmYiOjE3MDI5MTM0MDQsImV4cCI6MTcwMzUxODIwNCwiaWF0IjoxNzAyOTEzNDA0fQ.a5E4VCcaDsxeLJRTkV5xqJA2Za8c-l6tJLBw_NOHCx2p9rYI00flbb-EDpXwU06XfooOlLAi4dlq1hbTcZCeUQ
 Content-Type: application/json
 
 {
-  
-
     "name": "payment",
     "description": "",
     "recordtype": "2",
