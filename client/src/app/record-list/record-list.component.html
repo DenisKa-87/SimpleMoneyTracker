@@ -1,9 +1,71 @@
 <div class="mainContainer">
+    <div class="container mb-3 mt-3">
+        <form #form="ngForm" class="form-inline d-flex justify-content-center text-white " (ngSubmit)="getRecords()">
+            <div class="form-group mx-3">
+                <label>Show: </label>
+                <select name="recordType" style="width: 150px;" [(ngModel)]="userParams.RecordType" class="form-control ml-1">
+                    <option style="color: grey;" [value]="0">All</option>
+                    <option style="color: grey;" [value]="1">Expences</option>
+                    <option style="color: grey;" [value]="2">Income</option>
+                </select>
+            </div>
+            <div class="form-group mx-3">
+                <label>Category: </label>
+                <select name="CategoryId" style="width: 150px;" [(ngModel)]="userParams.CategoryId" class="form-control ml-1">
+                    <option style="color: grey;" [value]="-1">All</option>
+                    <option style="color: grey;" *ngFor="let category of categories" [value]="category.categoryId">{{category.name}}</option>
+                </select>
+            </div>
+            <div class="form-group mx-3">
+                <label>Sort by: </label>
+                <select style="width: 150px;" name="Order" [(ngModel)]="userParams.Order" class="form-control ml-1">
+                    <option style="color: grey;" [value]="'date'" selected>Date</option>
+                    <option style="color: grey;" *ngFor="let value of sortingList" [value]="value.value">{{value.display}}</option>
+                </select>
+            </div>
+            <div class="form-group mx-3" style="width: 150px;">
+                <label>From: </label>
+                <input class="form-control ml-1" name="MinDate" [(ngModel)]="userParams.MinDate" bsDatepicker >
+            </div>
+            <div class="form-group mx-3" style="width: 150px;">
+                <label>To: </label>
+                <input class="form-control ml-1" name="MaxDate" [(ngModel)]="userParams.MaxDate" bsDatepicker >
+            </div>
+            <!-- <div class="form-group mx-3"style="width: 150px;">
+                <label>To: </label>
+                <app-date-picker name="MaxDate" [(ngModel)]="userParams.MaxDate" [label]="'Pick a date'"></app-date-picker>
+            </div> -->
+            <div class="form-group mx-3">
+                <label>Items per page: </label>
+                <select name="itemsPerPage" [(ngModel)]="userParams.itemsPerPage" class="form-control ml-1">
+                    <option style="color: grey;" [value]="2">2</option>
+                    <option style="color: grey;" [value]="10">10</option>
+                    <option style="color: grey;" [value]="25">25</option>
+                    <option style="color: grey;" [value]="50">50</option>
+                </select>
+            </div>
+            <button class="btn btn-success  ml-1" type="submit" >Aply Filters</button>
+        </form>
+    </div>
     <h3 class="mt-5">List of your records: </h3>
     <div class="recordList mt-5">
         <ul>
             <li  *ngFor="let record of records">{{record.name}} {{record.price}} {{record.category}} {{record.description}}
                 {{record.date}} {{record.recordType}}  <button class="btn btn-danger btn-sm " (click)="deleteRecord(record.id)">Delete</button></li>
         </ul>
+    </div>
+    <div class="container">
+        <div class="d-flex mt-3  justify-content-center " *ngIf="pagination">
+            <pagination
+                [boundaryLinks]="true"
+                [totalItems]="pagination.totalItems"
+                [itemsPerPage]="pagination.itemsPerPage"
+                [(ngModel)]="pagination.currentPage"
+                (pageChanged)="pageChanged($event)"
+                previousText="&lsaquo;" 
+                nextText="&rsaquo;" 
+                firstText="&laquo;">
+            </pagination>
+        </div>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { JwtTokenInterceptor } from './_interceptors/jwt-token.interceptor';
 import { RecordListComponent } from './record-list/record-list.component';
 import { DatePickerComponent } from './_interceptors/_forms/date-picker/date-picker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     RecordListComponent,
     DatePickerComponent,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
       {positionClass: 'toast-bottom-right'}),
     FormsModule,
     BsDropdownModule.forRoot(), 
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true},
