@@ -1,9 +1,9 @@
-export class Record{
-    name: string;
-    description: string;
-    recordType: number;
-    category: string;
-    price: number;
-    date: Date;
-    id: number;
+export interface Record{
+    Name: string;
+    Description: string;
+    RecordType: number;
+    Category: string;
+    Price: number;
+    Date: Date;
+    Id: number;
 }

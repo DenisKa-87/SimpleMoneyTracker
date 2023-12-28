@@ -1,21 +1,21 @@
 <div class = "recordContainer">
     <button id="addRecord" type="submit" form="recordForm" (click)="recordForm.valid && addRecord()">Add record</button>
     <form [formGroup]="recordForm">
-        <input formControlName="name" type="text" placeholder="Item's name">
-        <input formControlName="price" type="number" placeholder="Item's price">
-        <input formControlName="category" type="text" placeholder="Item's category">
+        <input formControlName="Name" type="text" placeholder="Item's name">
+        <input formControlName="Price" type="number" placeholder="Item's price">
+        <input formControlName="Category" type="text" placeholder="Item's category">
         <app-date-picker [maxDate]="maxDate" [label]="'Pick a date'"
-        [formControl]='getControl(recordForm.controls["date"])'></app-date-picker>
+        [formControl]='getControl(recordForm.controls["Date"])'></app-date-picker>
         <div class="form-group">
             <label class="control-label" style="margin-right: 10px;">This is: </label>
-            <label for="" class="radio-inline">
-                <input type="radio" value="1" formControlName="recordType" >expence
+            <label for="" class="radio-inline">s
+                <input type="radio" value="1" formControlName="RecordType" >expence
             </label>
             <label for="" class="radio-inline">
-                <input type="radio" value="2" formControlName="recordType" >income
+                <input type="radio" value="2" formControlName="RecordType" >income
             </label>
         </div>
-        <input formControlName="description" type="text area" placeholder="Item's description">
+        <input formControlName="Description" type="text area" placeholder="Item's description">
         
     </form>
 </div>

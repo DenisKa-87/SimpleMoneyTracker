@@ -17,6 +17,8 @@ import { RecordListComponent } from './record-list/record-list.component';
 import { DatePickerComponent } from './_interceptors/_forms/date-picker/date-picker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { RecordcardComponent } from './recordcard/recordcard.component';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     SigninComponent,
     RecordListComponent,
     DatePickerComponent,
+    RecordcardComponent,
     
     
   ],
@@ -42,7 +45,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     FormsModule,
     BsDropdownModule.forRoot(), 
     BsDatepickerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    ModalModule.forRoot()
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true},

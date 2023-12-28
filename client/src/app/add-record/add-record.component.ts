@@ -30,12 +30,12 @@ export class AddRecordComponent implements OnInit {
 
   initializeForm(){
     this.recordForm = this.fb.group({
-      name: new FormControl("", Validators.required),
-      price: new FormControl("", Validators.required),
-      category: new FormControl(""),
-      description: new FormControl(""),
-      date: new FormControl(""),
-      recordType: new FormControl("1")
+      Name: new FormControl("", Validators.required),
+      Price: new FormControl("", Validators.required),
+      Category: new FormControl(""),
+      Description: new FormControl(""),
+      Date: new FormControl(""),
+      RecordType: new FormControl("1")
     })
   }
 

@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { UserParams } from '../_models/userParams';
 import { Pagination } from '../_models/Pagination';
 import { Category } from '../_models/Category';
+import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap/modal'
+import { RecordcardComponent } from '../recordcard/recordcard.component';
 
 @Component({
   selector: 'app-record-list',
@@ -21,7 +23,7 @@ export class RecordListComponent implements OnInit {
   categories: Category[] = []
   sortingList = [{value: 'date', display: 'Date'}, {value: 'value', display: 'Price'}, 
   {value: 'category', display: 'Category'} ]
-  constructor(public recordService: RecordService, private toastr: ToastrService){
+  constructor(public recordService: RecordService, private toastr: ToastrService, private modalService: BsModalService){
     this.userParams = recordService.getUserParams();
   }
   ngOnInit(): void {
@@ -41,16 +43,45 @@ export class RecordListComponent implements OnInit {
     }); 
   }
 
+  editRecord(record: Record){
+    const initialState: ModalOptions = {
+      initialState: {
+        record: record,//list: ['Open a modal with component', 'Pass your data', 'Do something else', '...'],,
+        //bsModalRef: this.bsModalRef,
+        title: 'Edit record'
+      }
+    };
+    
+    this.bsModalRef = this.modalService.show(RecordcardComponent, initialState);
+    //this.bsModalRef.content.record = record;
+    this.bsModalRef.content.bsModalRef = this.bsModalRef
+    this.bsModalRef.content.closeBtnName = 'Close';
+
+  }
+
   deleteRecord(recordId: number){
     this.recordService.deleteRecord(recordId).subscribe(x => {
       this.toastr.warning(x.message)
     })
-    this.recordService.records.splice(this.recordService.records.findIndex(m => m.id === recordId),1)
+    //this.recordService.records.splice(this.recordService.records.findIndex(m => m.id === recordId),1)
   }
 
   pageChanged(event: any){
     this.userParams.pageNumber = event.page
     this.recordService.setUserParams(this.userParams)
     this.getRecords()
+  }
+
+  bsModalRef?: BsModalRef;
+ 
+  openModalWithComponent() {
+    const initialState: ModalOptions = {
+      initialState: {
+        list: ['Open a modal with component', 'Pass your data', 'Do something else', '...'],
+        title: 'Modal with component'
+      }
+    };
+    this.bsModalRef = this.modalService.show(RecordcardComponent, initialState);
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

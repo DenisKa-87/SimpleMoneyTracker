@@ -13,7 +13,7 @@ import { Category } from '../_models/Category';
 export class RecordService {
 
   constructor(private http: HttpClient) { }
-  records: Record[] = []
+  //records: Record[] = []
   userParams = new UserParams();
   //categories: Category[];
 
@@ -52,7 +52,14 @@ export class RecordService {
     return this.http.post<Record>(environment.apiUrl + "records/add", record)
   }
 
+  udpateRecord(record: Record): any{
+    return this.http.put(environment.apiUrl + 'records/'+record.Id, record)
+  }
+
   deleteRecord(recordId: Number): any {
     return this.http.delete(environment.apiUrl + "records/" + recordId)
   }
+
+
+
 }
