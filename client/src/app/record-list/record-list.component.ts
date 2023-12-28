@@ -23,6 +23,8 @@ export class RecordListComponent implements OnInit {
   categories: Category[] = []
   sortingList = [{value: 'date', display: 'Date'}, {value: 'value', display: 'Price'}, 
   {value: 'category', display: 'Category'} ]
+  bsModalRef?: BsModalRef;
+
   constructor(public recordService: RecordService, private toastr: ToastrService, private modalService: BsModalService){
     this.userParams = recordService.getUserParams();
   }
@@ -46,16 +48,12 @@ export class RecordListComponent implements OnInit {
   editRecord(record: Record){
     const initialState: ModalOptions = {
       initialState: {
-        record: record,//list: ['Open a modal with component', 'Pass your data', 'Do something else', '...'],,
-        //bsModalRef: this.bsModalRef,
+        record: record,
         title: 'Edit record'
       }
     };
-    
     this.bsModalRef = this.modalService.show(RecordcardComponent, initialState);
-    //this.bsModalRef.content.record = record;
-    this.bsModalRef.content.bsModalRef = this.bsModalRef
-    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.bsModalRef = this.bsModalRef;
 
   }
 
@@ -63,7 +61,6 @@ export class RecordListComponent implements OnInit {
     this.recordService.deleteRecord(recordId).subscribe(x => {
       this.toastr.warning(x.message)
     })
-    //this.recordService.records.splice(this.recordService.records.findIndex(m => m.id === recordId),1)
   }
 
   pageChanged(event: any){
@@ -72,16 +69,6 @@ export class RecordListComponent implements OnInit {
     this.getRecords()
   }
 
-  bsModalRef?: BsModalRef;
- 
-  openModalWithComponent() {
-    const initialState: ModalOptions = {
-      initialState: {
-        list: ['Open a modal with component', 'Pass your data', 'Do something else', '...'],
-        title: 'Modal with component'
-      }
-    };
-    this.bsModalRef = this.modalService.show(RecordcardComponent, initialState);
-    this.bsModalRef.content.closeBtnName = 'Close';
-  }
+  
+
 }

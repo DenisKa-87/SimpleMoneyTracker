@@ -10,7 +10,7 @@
                 <h6><a href="/records" style="text-decoration: none !important;">Browse records</a></h6>
             </div>
             <div class="dropdown" dropdown>
-                <h6 class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>Welcome, {{(accountService.currentUser$|async).name}}!</h6>
+                <h6 class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>Welcome, {{(accountService.currentUser$|async).Name}}!</h6>
                 <div class="dropdown-menu" *dropdownMenu>
                     <h6 class="dropdown-item" (click)="logout()">Log out</h6>
                     <div class="dropdown-divider "></div>

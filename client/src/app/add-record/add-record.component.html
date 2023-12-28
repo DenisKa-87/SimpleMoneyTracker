@@ -6,16 +6,15 @@
         <input formControlName="Category" type="text" placeholder="Item's category">
         <app-date-picker [maxDate]="maxDate" [label]="'Pick a date'"
         [formControl]='getControl(recordForm.controls["Date"])'></app-date-picker>
-        <div class="form-group">
-            <label class="control-label" style="margin-right: 10px;">This is: </label>
-            <label for="" class="radio-inline">s
-                <input type="radio" value="1" formControlName="RecordType" >expence
+        <div class="form-group d-flex align-content-center justify-content-center ">
+            <label class="control-label  " style="height: 1vh;">This is: </label>
+            <label for="" class="radio-inline d-flex align-content-center" style="height: 1vh;">
+                <input type="radio" class="mx-1" style="height: 3vh; width: 3vh;" value="1" formControlName="RecordType">expence
             </label>
-            <label for="" class="radio-inline">
-                <input type="radio" value="2" formControlName="RecordType" >income
+            <label for="" class="radio-inline d-flex align-content-center" style="height: 1vh;">
+                <input class="mx-1" type="radio" value="2" formControlName="RecordType" style="height: 3vh; width: 3vh;"> income
             </label>
         </div>
-        <input formControlName="Description" type="text area" placeholder="Item's description">
-        
+        <input formControlName="Description" type="text area" class="mt-4" placeholder="Item's description">  
     </form>
 </div>

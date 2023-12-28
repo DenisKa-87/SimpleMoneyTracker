@@ -17,6 +17,7 @@
     align-items: center;
     gap: 2rem;
     width: 50vw;
+    color: white;
 }
 
 .recordContainer form{

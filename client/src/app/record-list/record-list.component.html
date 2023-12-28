@@ -1,6 +1,6 @@
-<div class="mainContainer">
+<div class="mainContainer text-white">
     <div class="container mb-3 mt-3">
-        <form #form="ngForm" class="form-inline d-flex justify-content-center text-white " (ngSubmit)="getRecords()">
+        <form #form="ngForm" class="form-inline d-flex justify-content-center text-white flex-wrap " (ngSubmit)="getRecords()">
             <div class="form-group mx-3">
                 <label>Show: </label>
                 <select name="recordType" style="width: 150px;" [(ngModel)]="userParams.RecordType" class="form-control ml-1">
@@ -44,7 +44,7 @@
                     <option style="color: grey;" [value]="50">50</option>
                 </select>
             </div>
-            <button class="btn btn-success  ml-1" type="submit" >Aply Filters</button>
+            <button class="btn btn-success  m-3 " type="submit" >Aply Filters</button>
         </form>
     </div>
     <h3 class="mt-5">List of your records: </h3>
@@ -55,6 +55,11 @@
                 <button class="btn btn-warning btn-sm " (click)="editRecord(record)">Edit</button>
                 <button class="btn btn-danger btn-sm " (click)="deleteRecord(record.Id)">Delete</button></li>
         </ul>
+    </div>
+    
+    <div class="container text-center mt-3 ">
+        <h3 style="color: rgb(241, 53, 53)" class="">Expences: {{pagination.expense}}</h3>
+        <h3 style="color: rgb(24, 225, 38)">Income: {{pagination.income}}</h3>
     </div>
     <div class="container">
         <div class="d-flex mt-3  justify-content-center " *ngIf="pagination">
