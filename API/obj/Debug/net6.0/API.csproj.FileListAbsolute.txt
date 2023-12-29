@@ -72,3 +72,4 @@ C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Microsoft.AspNetCo
 C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Main\myPetProjects\SimpleMoneyTracker\API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Main\myPetProjects\SimpleMoneyTracker\API\obj\Debug\net6.0\API.sourcelink.json

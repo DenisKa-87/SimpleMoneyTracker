@@ -1,4 +1,5 @@
 using API.Extensions;
+using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
 
 namespace API
@@ -15,7 +16,10 @@ namespace API
             //builder.Services.AddSwaggerGen();
             builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddControllers().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            {
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                x.JsonSerializerOptions.PropertyNamingPolicy = null;
+            })
             ;
             builder.Services.AddCors();
             var app = builder.Build();

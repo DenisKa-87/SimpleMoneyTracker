@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QJkpER7Jd+gg68NCf4OK2Kvk6UH83egqTt9V+fL6wOiBY0DnTasC8Mdzh2r8u/vJszIDQ/LZw9if8xTaDJqN0Q==",
+  "dgSpecHash": "JgkaKRLZnORXQqocAsz75f2cy+YDGdE5sGkGVXv0vMyL2+KoEx/mWxLiR70Pr4Pv7rzT+4MonWNUaLh72Izd5w==",
   "success": true,
   "projectFilePath": "C:\\Main\\myPetProjects\\SimpleMoneyTracker\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -53,7 +53,11 @@
     "C:\\Users\\26520\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\26520\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\26520\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
-    "C:\\Users\\26520\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
+    "C:\\Users\\26520\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\26520\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
   ],
   "logs": [
     {

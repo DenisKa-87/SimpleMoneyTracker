@@ -41,7 +41,7 @@ namespace API.Data
             };
         }
 
-        private Category GetCategoryByName(AppUser user, string categoryName = null)
+        private Category GetCategoryByName(AppUser user, string categoryName /*= null*/)
         {
             var category = user.Categories.Where(x => x.Name.ToLower() == categoryName.ToLower()).SingleOrDefault();
             if (category == null)
@@ -69,14 +69,14 @@ namespace API.Data
             _context.Remove(record);
         }
 
-        public void UpdateRecord(Record record, RecordDto recordDto)
+        public void UpdateRecord(Record record, RecordDto recordDto, AppUser user)
         {
             record.Name = recordDto.Name;
             record.Description = recordDto.Description;
             record.Date = recordDto.Date;
             record.Value = recordDto.Price;
             record.RecordType = recordDto.RecordType;
-            record.Category = GetCategoryByName(record.AppUser, recordDto.Category);
+            record.Category = GetCategoryByName(user, recordDto.Category);
             record.CreatedAt = DateTime.UtcNow;
             _context.Entry(record).State = EntityState.Modified;
         }

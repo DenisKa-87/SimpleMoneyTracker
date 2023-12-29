@@ -67,7 +67,7 @@ namespace API.Controllers
             _unitOfWork.RecordsRepository.DeleteRecord(record);
             if (await _unitOfWork.Complete())
                 return Ok(new ResponseMessage("Successfully deleted"));
-                //return Ok();
+            //return Ok();
             return BadRequest("Could not delete this record");
         }
 
@@ -94,13 +94,13 @@ namespace API.Controllers
                                            [FromQuery] string RecordType,
                                            [FromQuery] string MinDate,
                                            [FromQuery] string MaxDate,
-                                           [FromQuery] string itemsPerPage,
+                                           [FromQuery] string pageSize,
                                            [FromQuery] string pageNumber,
                                            [FromQuery] string Order)
         {
 
             var userId = Int32.Parse(User.Identity.GetUserId());
-            QueryParams queryParams = CreateQueryParams(CategoryId, RecordType, MinDate, MaxDate, itemsPerPage, pageNumber, Order);
+            QueryParams queryParams = CreateQueryParams(CategoryId, RecordType, MinDate, MaxDate, pageSize, pageNumber, Order);
             var records = await _unitOfWork.RecordsRepository.GetRecordsAsync(queryParams, userId);
             var response = new List<ResponseRecordDto>();
 
@@ -129,18 +129,33 @@ namespace API.Controllers
         }
 
         [HttpGet("summary")]
-        public Task<double> GetSummary([FromQuery] string CategoryId, 
-            [FromQuery] string RecordType, 
-            [FromQuery] string MinDate, 
+        public Task<double> GetSummary([FromQuery] string CategoryId,
+            [FromQuery] string RecordType,
+            [FromQuery] string MinDate,
             [FromQuery] string MaxDate)
         {
             throw new NotImplementedException();
         }
 
-        [HttpPost]
-        public Task<ActionResult<Record>> UpdateRecord(RecordDto recordDto, int id)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ResponseRecordDto>> UpdateRecord(RecordDto recordDto)
         {
-            throw new NotImplementedException();
+            var userName = User.Identity.Name;
+            var user = await _unitOfWork.AccountRepository.GetUserFullDataByEmailAsync(userName);
+            if (user == null)
+            {
+                return BadRequest("Somethig went wrong: user has not been found");
+            }
+            var record = user.Records.Where(x => x.Id == recordDto.Id).FirstOrDefault();
+            if (record == null)
+                return BadRequest("Sorry, there is no such record");
+            _unitOfWork.RecordsRepository.UpdateRecord(record, recordDto, user);
+
+            if (await _unitOfWork.Complete())
+            {
+                return Ok(CreateResponseRecordDto(record));
+            }
+            return BadRequest("Failed to add this record");
         }
     }
 }
